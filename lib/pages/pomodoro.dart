@@ -25,14 +25,22 @@ class Pomodoro extends StatelessWidget {
                   EntradaTempo(
                     value: store.tempoTrabalho,
                     title: "Trabalho",
-                    increment: store.incrementarTempoTrabalho,
-                    decrement: store.decrementarTempoTrabalho,
+                    increment: store.iniciado && store.estaTrabalhando()
+                        ? null
+                        : store.incrementarTempoTrabalho,
+                    decrement: store.iniciado && store.estaTrabalhando()
+                        ? null
+                        : store.decrementarTempoTrabalho,
                   ),
                   EntradaTempo(
                     value: store.tempoDescanso,
                     title: "Descanso",
-                    increment: store.incrementarTempoDescanso,
-                    decrement: store.decrementarTempoDescanso,
+                    increment: store.iniciado && store.estaDescansando()
+                        ? null
+                        : store.incrementarTempoDescanso,
+                    decrement: store.iniciado && store.estaDescansando()
+                        ? null
+                        : store.decrementarTempoDescanso,
                   ),
                 ],
               ),
