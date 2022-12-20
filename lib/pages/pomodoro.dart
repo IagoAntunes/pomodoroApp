@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:pomodoro/components/cronometro.dart';
 import 'package:pomodoro/components/entrada_tempo.dart';
+import 'package:pomodoro/store/pomodore.store.dart';
+import 'package:provider/provider.dart';
 
 class Pomodoro extends StatelessWidget {
   const Pomodoro({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final store = Provider.of<PomodoroStore>(context);
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -17,8 +20,8 @@ class Pomodoro extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                EntradaTempo(value: 25, title: "Trabalho"),
-                EntradaTempo(value: 5, title: "Descanso"),
+                EntradaTempo(value: store.tempoTrabalho, title: "Trabalho"),
+                EntradaTempo(value: store.tempoDescanso, title: "Descanso"),
               ],
             ),
           ),
