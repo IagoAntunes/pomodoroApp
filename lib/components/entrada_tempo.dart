@@ -5,10 +5,14 @@ class EntradaTempo extends StatelessWidget {
     super.key,
     required this.value,
     required this.title,
+    required this.decrement,
+    required this.increment,
   });
 
   final int value;
   final String title;
+  final Function() increment;
+  final Function() decrement;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +30,7 @@ class EntradaTempo extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () => null,
+              onPressed: this.decrement,
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
                 backgroundColor: Colors.red,
@@ -44,7 +48,7 @@ class EntradaTempo extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: this.increment,
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
                 backgroundColor: Colors.red,
